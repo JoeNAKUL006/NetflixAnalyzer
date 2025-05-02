@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Content Recommender</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header py-3 mb-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <h1 class="netflix-brand"><i class="fas fa-film me-2"></i>Netflix Recommender</h1>
+            <nav class="d-flex mt-2 mt-md-0 ms-md-auto">
+                <a class="btn btn-sm btn-outline-secondary me-2" href="https://github.com/yourusername/Flask-Netflix-Recommendation-System" target="_blank">
+                    <i class="fab fa-github me-1"></i> GitHub
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card bg-dark border-secondary">
+                        <div class="card-body">
+                            <h2 class="text-center mb-4">Find Your Next Favorite Show or Movie</h2>
+                            <p class="text-center text-muted">Enter a Netflix show or movie you enjoyed, and we'll recommend similar content you might like.</p>
+                            
+                            <!-- Search Form -->
+                            <div class="search-container">
+                                <form id="search-form" action="/recommendations" method="post">
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="moviename" name="moviename" class="form-control" placeholder="Enter a movie or TV show title..." aria-label="Movie Title" aria-describedby="search-button" required>
+                                        <button class="btn btn-netflix" type="submit" id="submit-btn">
+                                            <i class="fas fa-search me-1"></i> Find Similar Content
+                                        </button>
+                                    </div>
+                                    <div id="error-message" class="alert alert-danger d-none">
+                                        Please enter a movie or TV show title
+                                    </div>
+                                    <div id="loading-message" class="text-center mt-3 d-none">
+                                        <div class="spinner-border text-danger" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        <p class="loading mt-2">Searching for recommendations...</p>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Example Searches -->
+                            <div class="mt-4">
+                                <p class="text-center">Or try one of these examples:</p>
+                                <div class="d-flex flex-wrap justify-content-center gap-2">
+                                    <a href="#" class="example-search btn btn-sm btn-outline-secondary" data-title="Stranger Things">Stranger Things</a>
+                                    <a href="#" class="example-search btn btn-sm btn-outline-secondary" data-title="The Crown">The Crown</a>
+                                    <a href="#" class="example-search btn btn-sm btn-outline-secondary" data-title="Breaking Bad">Breaking Bad</a>
+                                    <a href="#" class="example-search btn btn-sm btn-outline-secondary" data-title="Money Heist">Money Heist</a>
+                                    <a href="#" class="example-search btn btn-sm btn-outline-secondary" data-title="Bird Box">Bird Box</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- How It Works -->
+                    <div class="card bg-dark border-secondary mt-4">
+                        <div class="card-body">
+                            <h3 class="card-title">How It Works</h3>
+                            <div class="row mt-3">
+                                <div class="col-md-4 text-center mb-3 mb-md-0">
+                                    <div class="h1 mb-3 text-info">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <h5>Enter a Title</h5>
+                                    <p class="text-muted">Search for a Netflix show or movie you enjoyed</p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3 mb-md-0">
+                                    <div class="h1 mb-3 text-info">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <h5>Content Analysis</h5>
+                                    <p class="text-muted">Our algorithm analyzes genres, cast, directors and more</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="h1 mb-3 text-info">
+                                        <i class="fas fa-list"></i>
+                                    </div>
+                                    <h5>Get Recommendations</h5>
+                                    <p class="text-muted">Discover new content based on your preferences</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>Netflix Recommendation System &copy; 2023</p>
+                <small class="text-muted">This is not affiliated with Netflix Inc.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
